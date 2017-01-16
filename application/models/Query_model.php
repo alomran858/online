@@ -65,6 +65,9 @@ public function enter($data){
 
 
 
+
+
+
             public function select($id){
                 $this->load->helper('url');
 
@@ -107,6 +110,7 @@ public function enter($data){
 
                                           $result = $this->db2->get();
 
+if ($result->row() !=null){
 
                                         $data['riyadh_number_of_tweet']=  $result->row()->number_of_tweet ;
 
@@ -498,7 +502,10 @@ public function enter($data){
                                           return $data ;
 
 
+}
 
+
+return ;
 
 
 

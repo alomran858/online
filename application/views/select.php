@@ -16,7 +16,13 @@ if($this->session->userdata('logged_in'))
      show_404();
    }
 
+ foreach($queries as $query){
+if($query->status !=1){
+  $this->load->view('notfinished');
 
+  exit();
+
+}}
 
 
 /*
@@ -26,24 +32,24 @@ You will find here all variables that will be used in graphs and the map ..pleas
 */
 
 
-$number_of_tweets=$riyadh_number_of_tweet+1+
-$Sarqiyah_number_of_tweet+1+
-$Dammam_number_of_tweet+1+
-$Sarqiyah_number_of_tweet+12+
-$Qasim_number_of_tweet+1+
-$hail_number_of_tweet+1+
-$Hudud_Samaliyah_number_of_tweet+1+
-$Hudud_Samaliyah_number_of_tweet+1+
-$Tabuk_number_of_tweet+1+
-$Madinah_number_of_tweet+1+
-$Mecca_number_of_tweet+23+
-$Mecca_number_of_tweet+1+
-$Bahah_number_of_tweet+1+
-$Abha_number_of_tweet+1+
-$Jizan_number_of_tweet+1+
-$Najran_number_of_tweet+1+
-$unlocated_number_of_tweet+1;
-$number_of_accounts=$number_of_tweets-21;
+$number_of_tweets=$riyadh_number_of_tweet+0+
+$Sarqiyah_number_of_tweet+0+
+$Dammam_number_of_tweet+0+
+$Sarqiyah_number_of_tweet+
+$Qasim_number_of_tweet+
+$hail_number_of_tweet+
+$Hudud_Samaliyah_number_of_tweet+0+
+$Hudud_Samaliyah_number_of_tweet+0+
+$Tabuk_number_of_tweet+0+
+$Madinah_number_of_tweet+0+
+$Mecca_number_of_tweet+
+$Mecca_number_of_tweet+
+$Bahah_number_of_tweet+
+$Abha_number_of_tweet+
+$Jizan_number_of_tweet+
+$Najran_number_of_tweet+
+$unlocated_number_of_tweet;
+$number_of_accounts=$number_of_tweets+0;
 
 
 //variables list of emaotions for each city (precentage %)
@@ -54,7 +60,7 @@ $Jubail=intval(($Sarqiyah_Positive_Emotion_Wight/($Sarqiyah_Positive_Emotion_Wig
 $Buraidah=intval(($Qasim_Positive_Emotion_Wight/($Qasim_Positive_Emotion_Wight + $Qasim_negative_emotion_wight+1))*100);
 $Hail=intval(($hail_Positive_Emotion_Wight/($hail_Positive_Emotion_Wight + $hail_negative_emotion_wight+1))*100);
 $Sakakah=intval(($Hudud_Samaliyah_Positive_Emotion_Wight/($Hudud_Samaliyah_Positive_Emotion_Wight + $Hudud_Samaliyah_negative_emotion_wight+1))*100);
-$Arar=intval(($Hudud_Samaliyah_Positive_Emotion_Wight/($Hudud_Samaliyah_Positive_Emotion_Wight + $Hudud_Samaliyah_negative_emotion_wight+1))*100)-2;
+$Arar=intval(($Hudud_Samaliyah_Positive_Emotion_Wight/($Hudud_Samaliyah_Positive_Emotion_Wight + $Hudud_Samaliyah_negative_emotion_wight+1))*100);
 $Tabuk=intval(($Tabuk_Positive_Emotion_Wight/($Tabuk_Positive_Emotion_Wight + $Tabuk_negative_emotion_wight+1))*100);
 $AlMadinah=intval(($Madinah_Positive_Emotion_Wight/($Madinah_Positive_Emotion_Wight + $Madinah_negative_emotion_wight+1))*100);
 $Jeddah=intval(($Mecca_Positive_Emotion_Wight/($Mecca_Positive_Emotion_Wight + $Mecca_negative_emotion_wight+1))*100)+1;
@@ -225,7 +231,7 @@ $hashtags = array("#pt", "#account", "#just_saying","#iglt", "#ff", "#previous_t
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="http://<?php echo base_url();  ?>index.php/user/panel" class="navbar-brand">
+					<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>" class="navbar-brand">
 						<small>
 							<i class="fa fa-bar-chart"></i>
 							Analyze Social Media
@@ -284,7 +290,7 @@ $hashtags = array("#pt", "#account", "#just_saying","#iglt", "#ff", "#previous_t
 
                 								<ul class="nav nav-list">
                 									<li class="active">
-                										<a href="http://<?php echo base_url();  ?>index.php/user/panel">
+                										<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">
                 											<i class="menu-icon fa fa-tachometer"></i>
                 											<span class="menu-text"> Dashboard </span>
                 										</a>
@@ -339,7 +345,7 @@ $hashtags = array("#pt", "#account", "#just_saying","#iglt", "#ff", "#previous_t
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="http://<?php echo base_url();  ?>index.php/user/panel">Home</a>
+								<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">Home</a>
 							</li>
 							<li class="active">Retrive Topic Result </li>
 						</ul><!-- /.breadcrumb -->
@@ -572,81 +578,95 @@ $hashtags = array("#pt", "#account", "#just_saying","#iglt", "#ff", "#previous_t
                           <img src="http://<?php echo base_url();  ?>/assets/images/gallery/map.png" alt="" class="img-responsive">
 
                              <div class="carousel-caption" id="Riyadh">
+  <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Riyadh >=50){echo "happy";}else{echo "cry"; $Riyadh=-(100-$Riyadh);}    ?>.svg" height="15" width="15" ?>
+
                          <?php  echo $Riyadh  ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Riyadh >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
+
                              </div>
 
 
                               <div class="carousel-caption" id="Dammam">
+                                <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Dammam >=50){echo "happy";}else{echo "cry"; $Dammam=-(100 - $Dammam);}    ?>.svg" height="15" width="15" ?>
+
                            <?php echo $Dammam  ; ?>%
-                               <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Dammam >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                               </div>
 
 
 
                                 <div class="carousel-caption" id="Buraidah">
+                                  <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Buraidah >=50){echo "happy";}else{echo "cry";$Buraidah=-(100-$Buraidah); }    ?>.svg" height="15" width="15" ?>
+
                               <?php echo $Buraidah  ; ?>%
-                                 <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Buraidah >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                                 </div>
 
                                 <div class="carousel-caption" id="Hail">
+  <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Hail >=50){echo "happy";}else{echo "cry";$Hail=-(100-$Hail); }    ?>.svg" height="15" width="15" ?>
                                <?php echo $Hail  ; ?>%
-                                  <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Hail >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
+
                                  </div>
                                   <div class="carousel-caption" id="Sakakah">
+                                    <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Sakakah >=50){echo "happy";}else{echo "cry"; $Sakakah=-(100- $Sakakah); }    ?>.svg" height="15" width="15" ?>
+
                                 <?php echo $Sakakah ; ?>%
-                                   <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Sakakah >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                                   </div>
 
                                   <div class="carousel-caption" id="Arar">
+                                    <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Arar >=50){echo "happy";}else{echo "cry";$Arar=-(100-$Arar); }    ?>.svg" height="15" width="15" ?>
+
                                 <?php echo $Arar  ; ?>%
-                                   <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Arar >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                                   </div>
 
 
                                   <div class="carousel-caption" id="Tabuk">
+                                    <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Tabuk >=50){echo "happy";}else{echo "cry";$Tabuk=-(100-$Tabuk); }    ?>.svg" height="15" width="15" ?>
+
                                 <?php echo $Tabuk ; ?>%
-                                   <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Tabuk >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                                   </div>
 
 
                                   <div class="carousel-caption" id="AlMadinah">
+                                    <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($AlMadinah >=50){echo "happy";}else{echo "cry";$AlMadinah =-(100-$AlMadinah ); }    ?>.svg" height="15" width="15" ?>
+
                                 <?php echo $AlMadinah  ; ?>%
-                                   <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($AlMadinah >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                                   </div>
 
 
 
                              <div class="carousel-caption" id="Mecca">
+                               <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Mecca >=50){echo "happy";}else{echo "cry"; $Mecca=-(100-$Mecca);}    ?>.svg" height="15" width="15" ?>
+
                            <?php echo $Mecca ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Mecca >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                              </div>
 
                              <div class="carousel-caption" id="AlBahah">
+                               <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($AlBahah >=50){echo "happy";}else{echo "cry";$AlBahah=-(100-$AlBahah); }    ?>.svg" height="15" width="15" ?>
+
                            <?php echo $AlBahah ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($AlBahah >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                              </div>
 
                              <div class="carousel-caption" id="Abha">
+                               <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Abha >=50){echo "happy";}else{echo "cry";$Abha=-(100-$Abha); }    ?>.svg" height="15" width="15" ?>
+
                               <?php echo $Abha  ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Abha >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                              </div>
 
 
 
                              <div class="carousel-caption" id="Jizan">
+                               <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Jizan >=50){echo "happy";}else{echo "cry"; $Jizan=-(100-$Jizan);}    ?>.svg" height="15" width="15" ?>
+
                              <?php echo $Jizan ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Jizan >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                              </div>
 
                              <div class="carousel-caption" id="Najran">
                          <?php echo $Najran ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Najran >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
+                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Najran >=50){echo "happy";}else{echo "cry"; $Najran= -(100-$Najran); }    ?>.svg" height="15" width="15" ?>
                              </div>
 
                              <div class="carousel-caption" id="Unlocated">
+                               <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Unlocated >=50){echo "happy";}else{echo "cry";$Unlocated=-(100-$Unlocated); }    ?>.svg" height="15" width="15" ?>
+
                          <p>unlocated:</p> <?php echo $Unlocated ; ?>%
-                              <img src="http://<?php echo base_url();  ?>/assets/images/gallery/<?php if($Unlocated >=50){echo "happy";}else{echo "cry"; }    ?>.svg" height="15" width="15" ?>
                              </div>
 
 

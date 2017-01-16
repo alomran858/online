@@ -17,12 +17,10 @@ if($this->session->userdata('logged_in'))
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Enter New Query  - Analyze Social Media </title>
+		<title>Dashboard - Analyze Social Media </title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-
 
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="http://<?php echo  base_url() ; ?>assets/css/bootstrap.min.css" />
@@ -118,6 +116,8 @@ if($this->session->userdata('logged_in'))
 		</div>
 
 		<div class="main-container ace-save-state" id="main-container">
+
+
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
@@ -126,6 +126,7 @@ if($this->session->userdata('logged_in'))
 				<script type="text/javascript">
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
+
 
 
                 								<ul class="nav nav-list">
@@ -180,6 +181,8 @@ if($this->session->userdata('logged_in'))
 			</div>
 
 			<div class="main-content">
+
+
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 						<ul class="breadcrumb">
@@ -187,61 +190,12 @@ if($this->session->userdata('logged_in'))
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">Home</a>
 							</li>
-							<li class="active">Enter New Query </li>
+							<li class="active">Dashboard</li>
 						</ul><!-- /.breadcrumb -->
 
 
 					</div>
-
-  <h1>-   Enter New Query </h1>
-
-
-  <div class="container">
-    <?php echo validation_errors(); ?>
-    <form action="http://<?php echo base_url();  ?>index.php/query/form" method="post">
-      <div class="form-group row">
-        <label for="Topic" class="col-sm-2 col-form-label">Enter Topic</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="topic" placeholder="#Topic">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="Date" class="col-sm-2 col-form-label">Start Retrive Date</label>
-        <div class="col-sm-10">
-        <input class="form-control" type="datetime-local" value="2011-08-19" name="startdate">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="Date" class="col-sm-2 col-form-label">Finish Retrive Date</label>
-        <div class="col-sm-10">
-        <input class="form-control" type="datetime-local" value="2011-08-19" name="finishdate">
-        </div>
-      </div>
-
-
-      <div class="form-group row">
-<label for="inputPassword3" class="col-sm-2 col-form-label">Select Emotional Keywords List </label>
-  <div class="col-sm-10">
-<select class="form-control" name="list">
-  <option value="p">Politics List</option>
-  <option value="s">Sport List </option>
-  <option value="w">Weather List </option>
-</select>
-        </div>
-        </div>
-
-      <center>
-      <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-          <input type='hidden' name='user_id' value='<?php echo "$id";?>'/>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </center>
-    </form>
-  </div>
-
+<center><font size="2000">Sorry comeback when we Finish Collecting and Analysing the Data</font></center>
 			</div><!-- /.main-content -->
 
 			<div class="footer">
@@ -261,6 +215,26 @@ if($this->session->userdata('logged_in'))
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
+
+<p>
+      <?php
+
+
+if(isset($file_path)){
+
+
+   echo $file_path ;
+
+}
+
+if(isset($msg)){
+
+  echo $msg ;
+}
+
+       ?>
+
+       </p>
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->

@@ -74,7 +74,7 @@ if($this->session->userdata('logged_in'))
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="http://<?php echo base_url();  ?>index.php/user/panel" class="navbar-brand">
+					<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>" class="navbar-brand">
 						<small>
 							<i class="fa fa-bar-chart"></i>
 							Analyze Social Media
@@ -133,7 +133,7 @@ if($this->session->userdata('logged_in'))
 
                 								<ul class="nav nav-list">
                 									<li class="active">
-                										<a href="http://<?php echo base_url();  ?>index.php/user/panel">
+                										<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">
                 											<i class="menu-icon fa fa-tachometer"></i>
                 											<span class="menu-text"> Dashboard </span>
                 										</a>
@@ -145,7 +145,7 @@ if($this->session->userdata('logged_in'))
                 										<a href="http://<?php echo base_url();  ?>index.php/query/newquery" >
                 											<i class="menu-icon fa fa-sign-in "></i>
                 											<span class="menu-text">
-                												  Retrieve Result
+                												  Enter New Query
                 											</span>
 
 
@@ -189,7 +189,7 @@ if($this->session->userdata('logged_in'))
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="http://<?php echo base_url();  ?>index.php/user/panel">Home</a>
+								<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">Home</a>
 							</li>
 							<li class="active">Retrieve Result  </li>
 						</ul><!-- /.breadcrumb -->

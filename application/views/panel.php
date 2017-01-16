@@ -71,7 +71,7 @@ if($this->session->userdata('logged_in'))
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="http://<?php echo base_url();  ?>index.php/user/panel" class="navbar-brand">
+					<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>" class="navbar-brand">
 						<small>
 							<i class="fa fa-bar-chart"></i>
 							Analyze Social Media
@@ -131,7 +131,7 @@ if($this->session->userdata('logged_in'))
 
                 								<ul class="nav nav-list">
                 									<li class="active">
-                										<a href="http://<?php echo base_url();  ?>index.php/user/panel">
+                										<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">
                 											<i class="menu-icon fa fa-tachometer"></i>
                 											<span class="menu-text"> Dashboard </span>
                 										</a>
@@ -188,14 +188,27 @@ if($this->session->userdata('logged_in'))
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="http://<?php echo base_url();  ?>index.php/user/panel">Home</a>
+								<a href="http://<?php echo base_url();  ?>index.php/user/panel/<?php echo $id ;  ?>">Home</a>
 							</li>
 							<li class="active">Dashboard</li>
 						</ul><!-- /.breadcrumb -->
 
 
 					</div>
-<center><font size="2000">Total <font color="LightBlue">Tweets</font> Collected Sofar : <br> 4573733 Tweet</font></center>
+
+
+
+<center><font size="2000">Hi  <font color="LightBlue"><?php echo $username ; ?> </font>  </font></center>
+
+<br><br>
+<center><font size="2000">You have <font color="red"><?php echo $notfi  ; ?> </font> Queries   <br>running right now and not yet finished </font></center>
+
+
+
+<br><br><br><br><br><br><br>
+
+<center><font size="2000">And You have <font color="LightBlue"><?php echo $fin ; ?> </font> Queries   <br>Finished with Result </font></center>
+
 			</div><!-- /.main-content -->
 
 			<div class="footer">

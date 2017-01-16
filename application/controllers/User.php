@@ -65,16 +65,19 @@ $password = $this->input->post('password');
      foreach($result as $row)
      {
        $sess_array = array(
+
          'id' => $row->user_id,
          'username' => $row->username
        );
+       $id=$row->user_id;
        $this->session->set_userdata('logged_in', $sess_array);
      }
 
 
 
+     $data = $this->user_model->panel($id);
 
-       $this->load->view('panel') ;
+       $this->load->view('panel',$data) ;
 
 
    }  else
@@ -98,11 +101,11 @@ public function logout(){
 }
 
 
-public function panel(){
+public function panel($id){
 
+ $data = $this->user_model->panel($id);
 
-
-     $this->load->view('panel') ;
+     $this->load->view('panel',$data) ;
 
 
 }

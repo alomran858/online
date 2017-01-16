@@ -19,6 +19,36 @@ public function register($data){
 
     }
 
+    public function panel($id){
+        $this->load->helper('url');
+
+$this->db->select(' COUNT(*) ');
+ $this -> db -> from('query');
+$this -> db -> where('user_id', $id);
+$this -> db -> where('status', 0);
+$query = $this->db->get();
+$result = $query->row_array();
+$data['notfi']=$result['COUNT(*)'];
+
+$this->db->select(' COUNT(*) ');
+ $this -> db -> from('query');
+$this -> db -> where('user_id', $id);
+$this -> db -> where('status', 1);
+$query = $this->db->get();
+$result = $query->row_array();
+$data['fin']=$result['COUNT(*)'];
+
+
+
+return $data ;
+
+
+
+
+
+
+        }
+
 
 
 
